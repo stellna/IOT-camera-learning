@@ -9,8 +9,7 @@
 
 #include "esp32/components/face-dl/include/detect_face.h"
 #include "esp32/components/face-dl/detect_face.cpp"
-
-static const char *TAG = "main";
+#include "camera/camera_task_1.c"
 
 extern "C" {
     void app_main (void);
@@ -20,9 +19,9 @@ void app_main (void) {
     ESP_LOGI(TAG, "program started");
 
     printf("testing\n");
-    detect_face();
+    TakePicture();
 
     while (true) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
